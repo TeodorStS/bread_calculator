@@ -68,8 +68,8 @@ function startTimer() {
         if (timeLeft <= 0) {
             clearInterval(timer);
             timer = null;
-            alert("Time’s up! ⏰");
             triggerAlarm();
+            alert("Time’s up! ⏰");
             return;
         }
         timeLeft--;
