@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bread Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <img class="bread_pic" src="/bread_calculator/images/bread.png">
+        <h1 class="title">Bread calculator</h1>
+        <div class="info">
+            <div class="row1">
+                <div>
+                    <label>Flour:</label>
+                    <input id="flour" type="number" step="50">
+                </div>
+                <div>
+                    <label>Water:</label>
+                    <input id="water" type="number" readonly class="no-spinner">
+                </div>
+            </div>
+            <div class="row2">
+                <div>
+                    <label>Hydratation:</label>
+                    <input id="hydratation" type="number">
+                </div>
+                <div>
+                    <label>Salt:</label>
+                    <input id="salt" type="number" readonly class="no-spinner">
+                </div>
+            </div>
+        </div>
+        <div class="btn">
+            <button>Calculate</button>
+        </div>
+        <div class="timer">
+        <h1>Stretch and fold</h1>
+
+        <div class="time-display" id="timeDisplay">00:00</div>
+
+        <div class="timer-controls">
+            <button class="timer-btn start">Start</button>
+            <button class="timer-btn pause">Pause</button>
+            <button class="timer-btn reset">Reset</button>
+        </div>
+
+        <div class="timer-set">
+            <label>Minutes:</label>
+            <input id="timerMinutes" type="number" min="0" max="60" value="30">
+        </div>
+        </div>
+    </div>
+    <audio id="alarmSound" src="images/iPhone Radar AlarmRingtone (Apple Sound) - Sound Effect for Editing.mp3" preload="auto"></audio>
+    <script src="index.js" defer>
+    </script>
+</body>
+</html>

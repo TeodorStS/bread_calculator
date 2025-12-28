@@ -1,0 +1,90 @@
+body{
+    background:#222;
+    font-family: 'Poppins',sans-serif;
+    color:#FDF3E8;
+}
+
+.card{
+    width:90%;
+    max-width:470px;
+    background:linear-gradient(#DED4B9,#e0c48b,#C98A54,#C98A54);
+    margin:100px auto 0;
+    border-radius:20px;
+    padding:40px 35px;
+    text-align:center;
+    
+}
+
+.bread_pic{
+    max-width: 15rem;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid #FDF3E8;
+    box-shadow: none;
+}
+
+input{
+    border: none;
+    text-decoration: none;
+    display: grid;
+}
+
+.info{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap: 8px 20px;
+}
+
+.btn{
+    margin-top:15px;
+    text-decoration: none;
+}
+
+button{
+    border-radius:10px;
+    background-color: #FDF3E8;
+    color:#222;
+}
+
+#timerMinutes{
+    align-self: center;
+}
+
+.timer-set{
+    margin:1rem;
+    display:flex;
+    justify-content: center;
+}
+
+input{
+    border-radius: 10px;
+    max-width:fit-content;
+}
+
+#timeDisplay{
+    margin:1rem;
+    border: solid;
+    max-width: fit-content;
+    margin: 1rem auto;
+    padding:0.5rem;
+    border-radius: 15px;
+}
+
+.labeloutput{
+    border-radius: 10px;
+    background-color: white;
+}
+
+.no-spinner::-webkit-inner-spin-button,
+.no-spinner::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.no-spinner {
+    appearance: textfield;
+}
