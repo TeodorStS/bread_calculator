@@ -31,6 +31,7 @@ const resetBtn = document.querySelector(".timer-btn.reset");
 
 let timer = null;
 let timeLeft = 0; // seconds
+let endTime = 0;
 
 const alarmSound = document.getElementById("alarmSound");
 
@@ -64,15 +65,22 @@ function startTimer() {
         timeLeft = Number(minutesInput.value) * 60;
     }
 
+    endTime = Date.now() + timeLeft * 1000;
+
     timer = setInterval(() => {
-        if (timeLeft <= 0) {
+        const remaining = Math.ceil((endTime - Date.now()) / 1000);
+
+        if (remaining <= 0) {
             clearInterval(timer);
             timer = null;
+            timeLeft = 0;
+            updateDisplay();
             triggerAlarm();
             alert("Time’s up! ⏰");
             return;
         }
-        timeLeft--;
+
+        timeLeft = remaining;
         updateDisplay();
     }, 1000);
 }
@@ -82,7 +90,7 @@ function pauseTimer() {
         clearInterval(timer);
         timer = null;
     }
-    stopAlarm(); // Stop alarm if it is ringing
+    stopAlarm();
 }
 
 function resetTimer() {
@@ -98,7 +106,6 @@ resetTimer();
 startBtn.addEventListener("click", startTimer);
 pauseBtn.addEventListener("click", pauseTimer);
 resetBtn.addEventListener("click", resetTimer);
-
 
 
 
