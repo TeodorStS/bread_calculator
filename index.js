@@ -4,6 +4,8 @@ const flourInput = document.querySelector("#flour");
 const hydrationInput = document.querySelector("#hydratation");
 const waterInput = document.querySelector("#water");
 const saltInput = document.querySelector("#salt");
+const effectiveHydratation=document.querySelector("#effective_hydratation");
+const flourtype=document.querySelector("#flours");
 const button = document.querySelector(".btn");
 
 function calculate() {
@@ -17,6 +19,23 @@ function calculate() {
 
     waterInput.value = Math.round(flour * (hydration / 100));
     saltInput.value = (flour * 0.02).toFixed(1);
+    
+    switch (flourtype.value) {
+    case "white":
+        effectiveHydratation.value = Number(hydrationInput.value) + 0;
+        break;
+
+    case "bread":
+        effectiveHydratation.value = Number(hydrationInput.value) + 2;
+        break;
+
+    case "wheat":
+        effectiveHydratation.value = Number(hydrationInput.value) + 7;
+        break;
+
+    default:
+        effectiveHydratation.value = Number(hydrationInput.value);
+    }
 }
 
 button.addEventListener("click", calculate);
