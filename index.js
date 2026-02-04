@@ -7,6 +7,11 @@ const saltInput = document.querySelector("#salt");
 const effectiveHydratation=document.querySelector("#effective_hydratation");
 const flourtype=document.querySelector("#flours");
 const button = document.querySelector(".btn");
+const gramswater = document.querySelector("#gw");
+const percentagewater = document.querySelector("#pw");
+const percentageflour = document.querySelector("#pf");
+const percentageSalt = document.querySelector("#ps");
+const gpwater = document.querySelector("#gpw");
 
 function calculate() {
     const flour = parseFloat(flourInput.value);
@@ -16,6 +21,7 @@ function calculate() {
         alert("Please enter flour and hydration");
         return;
     }
+
 
     waterInput.value = Math.round(flour * (hydration / 100));
     saltInput.value = (flour * 0.02).toFixed(1);
