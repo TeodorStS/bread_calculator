@@ -132,5 +132,10 @@ startBtn.addEventListener("click", startTimer);
 pauseBtn.addEventListener("click", pauseTimer);
 resetBtn.addEventListener("click", resetTimer);
 
+//extend the calc
+document.getElementByCLass("extend").onclick = function () {
+    window.location.href = "advanced.html";
+}
+
 
 

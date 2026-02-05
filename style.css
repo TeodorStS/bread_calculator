@@ -48,16 +48,14 @@ input{
     gap: 8px 20px;
 }
 
-.btn{
-    margin-top:15px;
-    text-decoration: none;
-}
 
 button{
     border-radius:10px;
     background-color: #FDF3E8;
     color:#222;
     padding:0.3rem;
+    margin-top:15px;
+    text-decoration: none;
 }
 
 #timerMinutes{
