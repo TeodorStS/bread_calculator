@@ -133,9 +133,22 @@ pauseBtn.addEventListener("click", pauseTimer);
 resetBtn.addEventListener("click", resetTimer);
 
 //extend the calc
-document.getElementByCLass("extend").onclick = function () {
-    window.location.href = "advanced.html";
+const extendBtn = document.querySelector(".extend button");
+if (extendBtn) {
+    extendBtn.addEventListener("click", function () {
+        window.location.href = "advanced.html";
+    });
 }
+
+//go back
+const backBtn = document.querySelector(".back button");
+if (backBtn) {
+    backBtn.addEventListener("click", function () {
+        window.location.href = "index.html";
+    });
+}
+
+
 
 
 
