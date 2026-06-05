@@ -8,51 +8,45 @@
 </head>
 <body>
     <div class="card2">
-        <img class="bread_pic" src="/images/bread.png">
+        <img class="bread_pic" src="images/bread.png" alt="Bread">
         <h1 class="title">Bread calculator</h1>
         <div class="info">
-            <div class="row1">
-                <div> 
-                    <label>Flour:</label>
-                    <input id="flour" type="number" step="50">
-                    <label for="flours">Type of Flour</label>
-                    <select name="flours" id="flours">
-                        <option value="white">white flour</option>
-                        <option value="bread">bread flour</option>
-                        <option value="weat">whole weat</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Water:</label>
-                    <input id="water" type="number" readonly class="no-spinner">
-                    <label for="gpw">The data is in </label>
-                    <select name="gpw" id="gpw">
-                        <option value="gw">grams</option>
-                        <option value="pw">%</option>
-                    </select>
-                </div>
+            <div>
+                <label>Flour:</label>
+                <input id="flour" type="number" step="50">
+                <label for="flours">Type of Flour</label>
+                <select name="flours" id="flours">
+                    <option value="white">white flour</option>
+                    <option value="bread">bread flour</option>
+                    <option value="wheat">whole wheat</option>
+                </select>
             </div>
-            <div class="row2">
-                <div>
-                    <label>Hydratation:</label>
-                    <input id="hydratation" type="number">
-                    <label>The data is in %</label>
-                </div>
-                <div>
-                    <label>Salt:</label>
-                    <input id="salt" type="number" readonly class="no-spinner">
-                    <label for="gps">The data is in </label>
-                    <select name="gps" id="gps">
-                        <option value="gs">grams</option>
-                        <option value="ps">%</option>
-                    </select>
-                </div>
+            <div>
+                <label>Hydration:</label>
+                <input id="hydratation" type="number">
+                <label>The data is in %</label>
             </div>
-            <div class="row3">
-                <div> 
-                    <label>Effective hydratation:</label>
-                    <input id="effective_hydratation" type="number" readonly class="no-spinner">
-                </div>
+            <div>
+                <label>Effective hydration:</label>
+                <input id="effective_hydratation" type="number" readonly class="no-spinner">
+            </div>
+            <div>
+                <label>Water:</label>
+                <input id="water" type="number" readonly class="no-spinner">
+                <label for="gpw">The data is in </label>
+                <select name="gpw" id="gpw">
+                    <option value="gw">grams</option>
+                    <option value="pw">%</option>
+                </select>
+            </div>
+            <div>
+                <label>Salt:</label>
+                <input id="salt" type="number" readonly class="no-spinner">
+                <label for="gps">The data is in </label>
+                <select name="gps" id="gps">
+                    <option value="gs">grams</option>
+                    <option value="ps">%</option>
+                </select>
             </div>
         </div>
         <div class="btn">

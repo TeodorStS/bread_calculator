@@ -4,14 +4,23 @@ const flourInput = document.querySelector("#flour");
 const hydrationInput = document.querySelector("#hydratation");
 const waterInput = document.querySelector("#water");
 const saltInput = document.querySelector("#salt");
-const effectiveHydratation=document.querySelector("#effective_hydratation");
-const flourtype=document.querySelector("#flours");
-const button = document.querySelector(".btn");
-const gramswater = document.querySelector("#gw");
-const percentagewater = document.querySelector("#pw");
-const percentageflour = document.querySelector("#pf");
-const percentageSalt = document.querySelector("#ps");
-const gpwater = document.querySelector("#gpw");
+
+// Advanced-page-only elements (absent on the basic page).
+const effectiveHydrationInput = document.querySelector("#effective_hydratation");
+const flourTypeSelect = document.querySelector("#flours");
+const waterUnitSelect = document.querySelector("#gpw"); // grams (gw) or % (pw)
+const saltUnitSelect = document.querySelector("#gps");  // grams (gs) or % (ps)
+
+const calculateBtn = document.querySelector(".btn button");
+
+// Extra water (%) absorbed by the flour's bran, lowering effective hydration.
+const FLOUR_ABSORPTION = {
+    white: 0,
+    bread: 2,
+    wheat: 7,
+};
+
+const SALT_PERCENT = 2; // salt is always 2% of flour weight
 
 function calculate() {
     const flour = parseFloat(flourInput.value);
@@ -22,29 +31,41 @@ function calculate() {
         return;
     }
 
+    const waterGrams = Math.round(flour * (hydration / 100));
+    const saltGrams = flour * (SALT_PERCENT / 100);
 
-    waterInput.value = Math.round(flour * (hydration / 100));
-    saltInput.value = (flour * 0.02).toFixed(1);
-    
-    switch (flourtype.value) {
-    case "white":
-        effectiveHydratation.value = Number(hydrationInput.value) + 0;
-        break;
+    // Water output: grams or the hydration percentage.
+    if (waterUnitSelect && waterUnitSelect.value === "pw") {
+        waterInput.value = hydration;
+    } else {
+        waterInput.value = waterGrams;
+    }
 
-    case "bread":
-        effectiveHydratation.value = Number(hydrationInput.value) + 2;
-        break;
+    // Salt output: grams or percentage.
+    if (saltUnitSelect && saltUnitSelect.value === "ps") {
+        saltInput.value = SALT_PERCENT;
+    } else {
+        saltInput.value = saltGrams.toFixed(1);
+    }
 
-    case "wheat":
-        effectiveHydratation.value = Number(hydrationInput.value) + 7;
-        break;
-
-    default:
-        effectiveHydratation.value = Number(hydrationInput.value);
+    // Effective hydration (advanced page only).
+    if (effectiveHydrationInput) {
+        const flourType = flourTypeSelect ? flourTypeSelect.value : "white";
+        const absorption = FLOUR_ABSORPTION[flourType] ?? 0;
+        effectiveHydrationInput.value = hydration - absorption;
     }
 }
 
-button.addEventListener("click", calculate);
+calculateBtn.addEventListener("click", calculate);
+
+// Recalculate live when a unit/flour-type dropdown changes (advanced page).
+[flourTypeSelect, waterUnitSelect, saltUnitSelect].forEach((select) => {
+    if (select) {
+        select.addEventListener("change", () => {
+            if (waterInput.value !== "") calculate();
+        });
+    }
+});
 
 // --- Timer ---
 
@@ -90,6 +111,8 @@ function startTimer() {
         timeLeft = Number(minutesInput.value) * 60;
     }
 
+    if (timeLeft <= 0) return; // nothing to count down
+
     endTime = Date.now() + timeLeft * 1000;
 
     timer = setInterval(() => {
@@ -101,7 +124,7 @@ function startTimer() {
             timeLeft = 0;
             updateDisplay();
             triggerAlarm();
-            alert("Time’s up! ⏰");
+            alert("Time's up! ⏰");
             return;
         }
 
@@ -132,23 +155,17 @@ startBtn.addEventListener("click", startTimer);
 pauseBtn.addEventListener("click", pauseTimer);
 resetBtn.addEventListener("click", resetTimer);
 
-//extend the calc
+// --- Page navigation ---
 const extendBtn = document.querySelector(".extend button");
 if (extendBtn) {
-    extendBtn.addEventListener("click", function () {
+    extendBtn.addEventListener("click", () => {
         window.location.href = "advanced.html";
     });
 }
 
-//go back
 const backBtn = document.querySelector(".back button");
 if (backBtn) {
-    backBtn.addEventListener("click", function () {
+    backBtn.addEventListener("click", () => {
         window.location.href = "index.html";
     });
 }
-
-
-
-
-
